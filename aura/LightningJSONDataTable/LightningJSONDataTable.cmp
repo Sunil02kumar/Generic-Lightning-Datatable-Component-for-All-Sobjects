@@ -1,0 +1,31 @@
+<aura:component controller="LightningJSONDataTableController">
+    <ltng:require styles="{!join(',', 
+                          $Resource.JSONDatatableResources + '/css/jquery.dataTables.css')}"
+                  scripts="{!join(',', 
+                           $Resource.JSONDatatableResources + '/js/jquery-3.2.1.js', 
+                           $Resource.JSONDatatableResources + '/js/datatables.min.js',
+                           $Resource.JSONDatatableResources + '/js/jquery.dataTables.min.js')}"  
+                           afterScriptsLoaded="{!c.doInit}"/>
+    <aura:attribute name="returnedJSON" type="String" />
+    <aura:attribute name="fieldsAPINameList" type="string" 
+                    default="Name,Type,AnnualRevenue, Createddate"/>
+    <aura:attribute name="columnsLabelList" type="string"  
+                    default="Account Name,Account Type, Revenue, Createddate"/>
+    <aura:attribute name="objAPIname" type="String"  
+                    default="Account" description="Object API name"/>
+    <aura:attribute name="sortingOrder" type="String" 
+                    default="LastModifiedDate DESC" description="Specify the sorting order of records"/>
+    <aura:attribute name="columnForHyperLink" type="String" 
+                    default="Name" description="Specify column for hyperlink to record detail page"/>
+    <aura:attribute name="filterCriteria" type="String" default="isDeleted = false"   
+    			    description="Criteria to filter records on UI. Leave blank in order to display all record"/>
+    <aura:attribute name="recordsLimit" type="String" default="200"   
+    			    description="Number of records to display on UI"/>
+    
+    
+    <!-- Mark up started-->
+    <div class="main-container">
+    	<div id="tableDiv" style="width:100%;overflow: auto;"></div>
+    </div>
+
+</aura:component>
